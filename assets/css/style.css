@@ -1,0 +1,114 @@
+body {
+  width: 1200px;
+  background-color: white;
+}
+
+#game-screen {
+  width: 1000px;
+  height: 750px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#ground {
+  width: 1000px;
+  height: 3000px;
+  margin-top: -2000px;
+  background-image: url("../images/textures/ground1.jpg");
+  background-size: contain;
+}
+
+.move-down {
+  margin-top: 0 !important;
+}
+
+.speed-on {
+  transition: margin-top 3s linear;
+}
+
+.jet {
+  position: absolute;
+}
+
+.jet-top {
+  position: absolute;
+  height: 90px;
+  width: 60px;
+  background-size: cover;
+}
+
+.jet-side {
+  position: absolute;
+  height: 90px;
+  width: 15px;
+  background-size: cover;
+}
+
+.smoke-trail {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+}
+
+#player {
+  height: 90px;
+  width: 60px;
+  margin-top: 600px;
+  margin-left: 470px;
+  transition: margin-left .8s ease-in-out, transform .4s ease-out, margin-top 1s linear;
+  transform-origin: 0% 100%;
+  background-size: 100% 100%;
+}
+
+#player #player-top {
+  transition: transform .8s ease-in-out;
+  background-image: url("../images/jet1top.png");
+}
+
+#player #player-side {
+  margin-left: 23px;
+  transition: transform .8s ease-in-out;
+  background-image: url("../images/jet1side.png");
+  transform: rotateY(90deg);
+}
+
+#player #player-smoke-3 {
+  margin-top: 80px;
+  margin-left: -20px;
+  background-image: url("../images/smoke.gif");
+  transform: rotate(180deg);
+}
+
+#player #player-smoke-1 {
+  margin-top: 65px;
+  margin-left: -40px;
+  background-image: url("../images/smoke.gif");
+  transform: rotate(180deg);
+}
+
+#player #player-smoke-2 {
+  margin-top: 65px;
+  background-image: url("../images/smoke.gif");
+  transform: rotate(180deg);
+}
+
+.explode {
+  transition: margin-top 1s linear !important;
+  margin-top: 750px !important;
+  height: 200px !important;
+  width: 200px !important;
+  background-image: url("../images/explosions/player4.gif");
+}
+
+.missle {
+  position: absolute;
+  height: 65px;
+  width: 15px;
+  margin-top: 630px;
+  background-image: url("../images/missle.gif");
+  background-size: cover;
+  transition: margin-top 1.5s ease-in, margin-left 1.5s ease-in;
+}
+
+/*# sourceMappingURL=data:application/json;base64,ewoJInZlcnNpb24iOiAzLAoJImZpbGUiOiAic3R5bGUuY3NzIiwKCSJzb3VyY2VzIjogWwoJCSJzdHlsZS5zY3NzIgoJXSwKCSJtYXBwaW5ncyI6ICJBQUFBLEFBQUEsSUFBSSxDQUFBO0VBQ0YsS0FBSyxFQUFFLE1BQU87RUFDZCxnQkFBZ0IsRUFBRSxLQUFNO0NBQ3pCOztBQUdELEFBQUEsWUFBWSxDQUFBO0VBQ1YsS0FBSyxFQUFFLE1BQU87RUFDZCxNQUFNLEVBQUUsS0FBTTtFQUNkLE1BQU0sRUFBRSxNQUFPO0VBQ2YsUUFBUSxFQUFFLE1BQU87Q0FDbEI7O0FBQ0QsQUFBQSxPQUFPLENBQUE7RUFDTCxLQUFLLEVBQUUsTUFBTztFQUNkLE1BQU0sRUFBRSxNQUFPO0VBQ2YsVUFBVSxFQUFFLE9BQVE7RUFDcEIsZ0JBQWdCLEVBQUUscUNBQUc7RUFDckIsZUFBZSxFQUFFLE9BQVE7Q0FDMUI7O0FBQ0QsQUFBQSxVQUFVLENBQUE7RUFDUixVQUFVLEVBQUUsWUFBYTtDQUMxQjs7QUFDRCxBQUFBLFNBQVMsQ0FBQTtFQUNQLFVBQVUsRUFBRSxvQkFBcUI7Q0FDbEM7O0FBRUQsQUFBQSxJQUFJLENBQUE7RUFDRixRQUFRLEVBQUUsUUFBUztDQUNwQjs7QUFFRCxBQUFBLFFBQVEsQ0FBQTtFQUNOLFFBQVEsRUFBRSxRQUFTO0VBQ25CLE1BQU0sRUFBRSxJQUFLO0VBQ2IsS0FBSyxFQUFFLElBQUs7RUFDWixlQUFlLEVBQUUsS0FBTTtDQUN4Qjs7QUFDRCxBQUFBLFNBQVMsQ0FBQTtFQUNQLFFBQVEsRUFBRSxRQUFTO0VBQ25CLE1BQU0sRUFBRSxJQUFLO0VBQ2IsS0FBSyxFQUFFLElBQUs7RUFDWixlQUFlLEVBQUUsS0FBTTtDQUN4Qjs7QUFDRCxBQUFBLFlBQVksQ0FBQTtFQUNWLFFBQVEsRUFBRSxRQUFTO0VBQ25CLE1BQU0sRUFBRSxLQUFNO0VBQ2QsS0FBSyxFQUFFLEtBQU07RUFDYixlQUFlLEVBQUUsS0FBTTtDQUN4Qjs7QUFDRCxBQUFBLE9BQU8sQ0FBQTtFQUNMLE1BQU0sRUFBRSxJQUFLO0VBQ2IsS0FBSyxFQUFFLElBQUs7RUFDWixVQUFVLEVBQUUsS0FBTTtFQUNsQixXQUFXLEVBQUUsS0FBTTtFQUNuQixVQUFVLEVBQUUseUVBQTBFO0VBQ3RGLGdCQUFnQixFQUFFLE9BQVE7RUFDMUIsZUFBZSxFQUFFLFNBQVU7Q0E2QjVCOztBQXBDRCxBQVNFLE9BVEssQ0FTTCxXQUFXLENBQUE7RUFDVCxVQUFVLEVBQUUseUJBQTBCO0VBQ3RDLGdCQUFnQixFQUFFLDRCQUFHO0NBQ3RCOztBQVpILEFBYUUsT0FiSyxDQWFMLFlBQVksQ0FBQTtFQUNWLFdBQVcsRUFBRSxJQUFLO0VBQ2xCLFVBQVUsRUFBRSx5QkFBMEI7RUFDdEMsZ0JBQWdCLEVBQUUsNkJBQUc7RUFDckIsU0FBUyxFQUFDLGNBQU87Q0FDbEI7O0FBbEJILEFBbUJFLE9BbkJLLENBbUJMLGVBQWUsQ0FBQTtFQUNaLFVBQVUsRUFBRSxJQUFLO0VBQ2pCLFdBQVcsRUFBRSxLQUFNO0VBQ25CLGdCQUFnQixFQUFFLDBCQUFHO0VBQ3JCLFNBQVMsRUFBRSxjQUFNO0NBQ25COztBQXhCSCxBQXlCRSxPQXpCSyxDQXlCTCxlQUFlLENBQUE7RUFDWixVQUFVLEVBQUUsSUFBSztFQUNqQixXQUFXLEVBQUUsS0FBTTtFQUNuQixnQkFBZ0IsRUFBRSwwQkFBRztFQUNyQixTQUFTLEVBQUUsY0FBTTtDQUNuQjs7QUE5QkgsQUErQkUsT0EvQkssQ0ErQkwsZUFBZSxDQUFBO0VBQ1osVUFBVSxFQUFFLElBQUs7RUFDakIsZ0JBQWdCLEVBQUUsMEJBQUc7RUFDckIsU0FBUyxFQUFFLGNBQU07Q0FDbkI7O0FBRUgsQUFBQSxRQUFRLENBQUE7RUFDTixVQUFVLEVBQUUsK0JBQWdDO0VBQzVDLFVBQVUsRUFBRSxnQkFBaUI7RUFDN0IsTUFBTSxFQUFFLGdCQUFpQjtFQUN6QixLQUFLLEVBQUUsZ0JBQWlCO0VBQ3hCLGdCQUFnQixFQUFFLHVDQUFHO0NBQ3RCOztBQUNELEFBQUEsT0FBTyxDQUFBO0VBQ0wsUUFBUSxFQUFFLFFBQVM7RUFDbkIsTUFBTSxFQUFFLElBQUs7RUFDYixLQUFLLEVBQUUsSUFBSztFQUNaLFVBQVUsRUFBRSxLQUFNO0VBQ2xCLGdCQUFnQixFQUFFLDJCQUFHO0VBQ3JCLGVBQWUsRUFBRSxLQUFNO0VBQ3ZCLFVBQVUsRUFBRSxpREFBa0Q7Q0FDL0QiLAoJIm5hbWVzIjogW10KfQ== */

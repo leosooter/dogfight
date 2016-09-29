@@ -1,0 +1,101 @@
+body{
+  width: 1200px;
+  background-color: white;
+}
+
+
+#game-screen{
+  width: 1000px;
+  height: 750px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#ground{
+  width: 1000px;
+  height: 3000px;
+  margin-top: -2000px;
+  background-image: url("../images/textures/ground1.jpg");
+  background-size: contain;
+}
+.move-down{
+  margin-top: 0 !important;
+}
+.speed-on{
+  transition: margin-top 3s linear;
+}
+
+.jet{
+  position: absolute;
+}
+
+.jet-top{
+  position: absolute;
+  height: 90px;
+  width: 60px;
+  background-size: cover;
+}
+.jet-side{
+  position: absolute;
+  height: 90px;
+  width: 15px;
+  background-size: cover;
+}
+.smoke-trail{
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+}
+#player{
+  height: 90px;
+  width: 60px;
+  margin-top: 600px;
+  margin-left: 470px;
+  transition: margin-left .8s ease-in-out, transform .4s ease-out, margin-top 1s linear;
+  transform-origin: 0% 100%;
+  background-size: 100% 100%;
+
+  #player-top{
+    transition: transform .8s ease-in-out;
+    background-image: url("../images/jet1top.png");
+  }
+  #player-side{
+    margin-left: 23px;
+    transition: transform .8s ease-in-out;
+    background-image: url("../images/jet1side.png");
+    transform:rotateY(90deg);
+  }
+  #player-smoke-3{
+     margin-top: 80px;
+     margin-left: -20px;
+     background-image: url("../images/smoke.gif");
+     transform: rotate(180deg);
+  }
+  #player-smoke-1{
+     margin-top: 65px;
+     margin-left: -40px;
+     background-image: url("../images/smoke.gif");
+     transform: rotate(180deg);
+  }
+  #player-smoke-2{
+     margin-top: 65px;
+     background-image: url("../images/smoke.gif");
+     transform: rotate(180deg);
+  }
+}
+.explode{
+  transition: margin-top 1s linear !important;
+  margin-top: 750px !important;
+  height: 200px !important;
+  width: 200px !important;
+  background-image: url("../images/explosions/player4.gif");
+}
+.missle{
+  position: absolute;
+  height: 65px;
+  width: 15px;
+  margin-top: 630px;
+  background-image: url("../images/missle.gif");
+  background-size: cover;
+  transition: margin-top 1.5s ease-in, margin-left 1.5s ease-in;
+}
