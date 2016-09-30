@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
   console.log("JQuery has loaded");
 
@@ -8,23 +7,23 @@ $(document).ready(function() {
   var enemyCount = 1;
 
   function generateEnemy(){
-    rand1 = Math.floor(Math.random()*10)*50 + 50;
+    rand1 = Math.floor(Math.random()*18)*50 + 50;
     console.log(rand1);
     var enemyId = "#enemy" + enemyCount;
     var enemy = '<div id="enemy' + enemyCount + '" class="enemy jet"><div id="enemy' + enemyCount + '-top" class="jet-top"></div><div id="enemy' + enemyCount + '-side" class="jet-side"></div></div>';
     $("#game-screen").prepend(enemy);
-    $(enemyId).css("margin-top", rand1 + "px");
+    $(enemyId).css("margin-left", rand1 + "px");
     setTimeout(function(){
-      $(enemyId).css("margin-left", "-100px");
+      $(enemyId).css("margin-top", "850px");
     }, 100);
     enemyCount ++;
     setTimeout(function(){
       $(enemyId).remove();
       enemyCount --;
-    }, 6000);
+    }, 3000);
     setTimeout(function(){
       generateEnemy();
-    },7000);
+    },5000);
   }
 
   generateEnemy();
@@ -44,7 +43,7 @@ $(document).ready(function() {
         $("#ground").addClass('speed-on');
         moveGround();
       },30);
-    }, 9970);
+    }, 14970);
   }
   moveGround();
   //var missile = "<div class='missile'></div>";
@@ -56,61 +55,54 @@ $(document).ready(function() {
     topId : $("#player-top"),
     sideId : $("#player-side"),
     life : 1,
-    yAxis : 300,
-    xAxis : 50,
+    left : 470,
     topDeg : 0,
     sideDeg : 90,
     moveRight : function(){
       wing = -20;
       this.topDeg -= 50;
       this.sideDeg -= 50;
-      player.topId.css("transform", "rotateX(" + this.topDeg + "deg)");
-      player.sideId.css("transform", "rotateX(" + this.sideDeg + "deg)");
-      this.yAxis += 50;
-      this.xAxis += 50;
-      this.id.css("transform", "rotate(15deg)");
-      this.id.css("margin-top", this.yAxis + "px");
-      this.id.css("margin-left", this.xAxis + "px");
-      
+      player.topId.css("transform", "rotateY(" + this.topDeg + "deg)");
+      player.sideId.css("transform", "rotateY(" + this.sideDeg + "deg)");
+      this.left += 50;
+      this.id.css("transform", "rotate(5deg)");
+      this.id.css("margin-left", this.left + "px");
       setTimeout(function(){
         player.topDeg += 50;
         player.sideDeg += 50;
-        player.xAxis -= 50;
         player.id.css("transform", "rotate(0deg)");
-        player.topIdid.css("transform", "rotateX(" + player.topDeg + "deg)");
-        player.sideId.css("transform", "rotateX(" + player.sideDeg + "deg)");
-        player.id.css("margin-left", player.xAxis + "px");
+        player.topId.css("transform", "rotateY(" + player.topDeg + "deg)");
+        player.sideId.css("transform", "rotateY(" + player.sideDeg + "deg)");
         wing = -10;
       }, 400);
-
     },
     moveLeft : function(){
       wing = 20;
       this.topDeg += 50;
       this.sideDeg += 50;
-      player.topId.css("transform", "rotateX(" + this.topDeg + "deg)");
-      player.sideId.css("transform", "rotateX(" + this.sideDeg + "deg)");
-      this.yAxis -= 50;
-      this.id.css("transform", "rotate(-15deg)");
-      this.id.css("margin-top", this.yAxis + "px");
+      player.topId.css("transform", "rotateY(" + this.topDeg + "deg)");
+      player.sideId.css("transform", "rotateY(" + this.sideDeg + "deg)");
+      this.left -= 50;
+      this.id.css("transform", "rotate(-5deg)");
+      this.id.css("margin-left", this.left + "px");
       setTimeout(function(){
         player.topDeg -= 50;
         player.sideDeg -= 50;
         player.id.css("transform", "rotate(0deg)");
-        player.topId.css("transform", "rotateX(" + player.topDeg + "deg)");
-        player.sideId.css("transform", "rotateX(" + player.sideDeg + "deg)");
-        wing = +10;
+        player.topId.css("transform", "rotateY(" + player.topDeg + "deg)");
+        player.sideId.css("transform", "rotateY(" + player.sideDeg + "deg)");
+        wing = 10;
       }, 400);
     },
     rollRight : function(){
       wing = -150;
       this.topDeg -= 360;
       this.sideDeg -= 360;
-      this.topId.css("transform", "rotateX(" + this.topDeg + "deg)");
-      this.sideId.css("transform", "rotateX(" + this.sideDeg + "deg)");
-      this.yAxis += 250;
-      this.id.css("transform", "rotate(20deg)");
-      this.id.css("margin-top", this.yAxis + "px");
+      this.topId.css("transform", "rotateY(" + this.topDeg + "deg)");
+      this.sideId.css("transform", "rotateY(" + this.sideDeg + "deg)");
+      this.left += 200;
+      this.id.css("transform", "rotate(10deg)");
+      this.id.css("margin-left", this.left + "px");
       setTimeout(function(){
         player.id.css("transform", "rotate(0deg)");
         wing = -10;
@@ -120,19 +112,16 @@ $(document).ready(function() {
       wing = 150;
       this.topDeg += 360;
       this.sideDeg += 360;
-      this.topId.css("transform", "rotateX(" + this.topDeg + "deg)");
-      this.sideId.css("transform", "rotateX(" + this.sideDeg + "deg)");
-      this.yAxis -= 250;
-      this.id.css("transform", "rotate(-20deg)");
-      this.id.css("margin-top", this.yAxis + "px");
+      this.topId.css("transform", "rotateY(" + this.topDeg + "deg)");
+      this.sideId.css("transform", "rotateY(" + this.sideDeg + "deg)");
+      this.left -= 200;
+      this.id.css("transform", "rotate(-10deg)");
+      this.id.css("margin-left", this.left + "px");
       setTimeout(function(){
         player.id.css("transform", "rotate(0deg)");
         wing = 10;
       }, 400);
     },
-    roll90Right : function(){
-
-    }
   };
 
   player.id.click(function(){
@@ -148,42 +137,32 @@ $(document).ready(function() {
     console.log("endGame");
     player.id.empty();
     player.id.addClass('explode-player');
-    player.id.css("margin-top", (player.yAxis - 70) + "px");
+    player.id.css("margin-left", (player.left - 70) + "px");
   }
 
   $(document).keydown(function(event){
     console.log(event.which);
     if(event.which === 37 && event.shiftKey){
-      if(player.yAxis - 250 > -50){
-        player.rollLeft();
-      }
-      else if(player.yAxis - 50 > -50){
-        player.moveLeft();
-      }
+      //console.log("left + shift");
+      player.rollLeft();
     }
     else if(event.which === 39 && event.shiftKey){
-      if(player.yAxis + 250 < 750){
-        player.rollRight();
-      }
-      else if(player.yAxis + 50 < 750){
-        player.moveRight();
-      }
+      //console.log("right + shift");
+      player.rollRight();
     }
     else if(event.which === 37){
-      if(player.yAxis - 50 > -50){
-        player.moveLeft();
-      }
+      //console.log("left");
+      player.moveLeft();
     }
     else if(event.which === 38){
-      player.roll90Left();
+      console.log("up");
     }
     else if(event.which === 39){
-      if(player.yAxis + 50 < 750){
-        player.moveRight();
-      }
+      //console.log("right");
+      player.moveRight();
     }
     else if(event.which === 40){
-      player.roll90Right();
+      //console.log("down");
     }
     else if(event.which === 32){
       //debugger;
@@ -192,11 +171,11 @@ $(document).ready(function() {
       var missile = "<div id='missile"+ missileCount +"' class='missile'></div>";
       var missileId = "#missile" + missileCount;
       $("#game-screen").prepend(missile);
-      $(missileId).css("margin-top", ((player.yAxis + 30) + wing) + "px");
-      console.log("plane " + (player.yAxis + 30) + " missile start " + ((player.yAxis + 30) + wing) + "");
+      $(missileId).css("margin-left", ((player.left + 30) + wing) + "px");
+      console.log("plane " + (player.left + 30) + " missile start " + ((player.left + 30) + wing) + "");
       setTimeout(function(){
         $(missileId).css("margin-top", "0");
-        $(missileId).css("margin-top", (player.yAxis + 30) + "px");
+        $(missileId).css("margin-left", (player.left + 30) + "px");
         console.log("offet = " + ($("#enemy1").offset().top + 100));
         //Calculates time missile will need to fly to reach target from enemy offset from top
         var dist = 1.5 * (750 - ($("#enemy1").offset().top + 100));
@@ -213,9 +192,7 @@ $(document).ready(function() {
       console.log(target);
       $(id).remove();
       $(target).empty();
-      $(target).css("margin-top", (player.yAxis - 70) + "px");
       $(target).addClass('explode-enemy');
-      $(target).css("opacity", "0");
     }, dist);
   }
 });

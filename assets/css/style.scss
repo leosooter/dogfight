@@ -1,27 +1,26 @@
 body{
-  width: 1200px;
+  width: 1400px;
   background-color: white;
 }
 
 
 #game-screen{
-  width: 1000px;
+  width: 1400px;
   height: 750px;
-  margin: 0 auto;
   overflow: hidden;
 }
 #ground{
-  width: 1000px;
-  height: 3000px;
-  margin-top: -2000px;
+  width: 3000px;
+  height: 1400px;
+  margin-left: 0;
   background-image: url("../images/textures/ground1.jpg");
   background-size: contain;
 }
 .move-down{
-  margin-top: 0 !important;
+  margin-left: -1000px !important;
 }
 .speed-on{
-  transition: margin-top 3s linear;
+  transition: margin-left 10s linear;
 }
 
 .jet{
@@ -30,14 +29,14 @@ body{
 
 .jet-top{
   position: absolute;
-  height: 90px;
-  width: 60px;
+  height: 60px;
+  width: 90px;
   background-size: cover;
 }
 .jet-side{
   position: absolute;
-  height: 90px;
-  width: 15px;
+  height: 15px;
+  width: 90px;
   background-size: cover;
 }
 .smoke-trail{
@@ -47,55 +46,98 @@ body{
   background-size: cover;
 }
 #player{
-  height: 90px;
-  width: 60px;
-  margin-top: 600px;
-  margin-left: 470px;
-  transition: margin-left .8s ease-in-out, transform .4s ease-out, margin-top 1s linear;
+  height: 60px;
+  width: 90px;
+  margin-left: 50px;
+  margin-top: 300px;
+  transition: margin-top 800ms ease-in-out, transform 400ms ease-out, margin-left 800ms cubic-bezier(.81,.87,.63,1.44);
   transform-origin: 0% 100%;
   background-size: 100% 100%;
 
   #player-top{
-    transition: transform .8s ease-in-out;
-    background-image: url("../images/jet1top.png");
+    transition: transform 800ms cubic-bezier(0,1.71,.7,.37);
+    //transition: transform 800ms ease-in-out;
+    background-image: url("../images/h-jet1top.png");
   }
   #player-side{
-    margin-left: 23px;
-    transition: transform .8s ease-in-out;
-    background-image: url("../images/jet1side.png");
-    transform:rotateY(90deg);
+    margin-top: 23px;
+    transition: transform 800ms cubic-bezier(0,1.71,.7,.37);
+    //transition: transform 800ms ease-in-out;
+    background-image: url("../images/h-jet1side.png");
+    transform:rotateX(90deg);
   }
   #player-smoke-3{
-     margin-top: 80px;
-     margin-left: -20px;
+     margin-left: -80px;
+     margin-top: -20px;
      background-image: url("../images/smoke.gif");
-     transform: rotate(180deg);
+     transform: rotate(-90deg);
   }
   #player-smoke-1{
-     margin-top: 65px;
-     margin-left: -40px;
+     margin-left: -65px;
+     margin-top: -40px;
      background-image: url("../images/smoke.gif");
-     transform: rotate(180deg);
+     transform: rotate(-90deg);
   }
   #player-smoke-2{
-     margin-top: 65px;
+     margin-left: -65px;
      background-image: url("../images/smoke.gif");
-     transform: rotate(180deg);
+     transform: rotate(-90deg);
   }
 }
-.explode{
-  transition: margin-top 1s linear !important;
-  margin-top: 750px !important;
+
+#enemy1{
+  height: 60px;
+  width: 90px;
+  margin-left: 1400px;
+  //margin-top: 470px;
+  transition: margin-left 6s linear;
+  transform: rotate(180deg);
+  background-size: 100% 100%;
+  #enemy1-top{
+    background-image: url("../images/h-jet3top.png");
+  }
+  #enemy1-side{
+    margin-top: 23px;
+    transition: transform 800ms ease-in-out;
+    background-image: url("../images/h-jet3side.png");
+    transform:rotateX(90deg);
+  }
+  #enemy1-smoke-1{
+     margin-left: 65px;
+     margin-top: -40px;
+     background-image: url("../images/smoke.gif");
+  }
+}
+
+.explode-player{
+  transition: margin-left 1s linear !important;
+  margin-left: -90px !important;
   height: 200px !important;
   width: 200px !important;
   background-image: url("../images/explosions/player4.gif");
 }
-.missle{
+.explode-enemy{
+  transition: margin-left 1s linear, opacity 3s ease-in !important;
+  //margin-top: 750px !important;
+  height: 200px !important;
+  width: 200px !important;
+  background-image: url("../images/explosions/player4.gif");
+}
+.spiral-enemy{
+  transition: margin-left 1s linear, transform 1s linear !important;
+  transform: rotateX(-30deg) !important;
+  //transform: scale(50%) !important;
+  //transform: rotateY(-30deg) !important;
+}
+
+
+.missile{
   position: absolute;
-  height: 65px;
-  width: 15px;
-  margin-top: 630px;
-  background-image: url("../images/missle.gif");
+  height: 15px;
+  width: 65px;
+  margin-left: 30px;
+  background-image: url("../images/h-missile.gif");
   background-size: cover;
-  transition: margin-top 1.5s ease-in, margin-left 1.5s ease-in;
+  transition: margin-left 1.5s ease-in, margin-top 1.5s ease-in;
+  transform:rotate(90deg);
 }
