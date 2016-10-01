@@ -32,7 +32,7 @@ body{
   margin-top: 0 !important;
 }
 .speed-on{
-  transition: margin-top 90s linear;
+  transition: margin-top 110s linear;
 }
 
 .jet{
@@ -94,6 +94,27 @@ body{
      transform: rotate(180deg);
   }
 }
+
+.enemy{
+  height: 90px;
+  width: 60px;
+  margin-top: -100px;
+  transition: margin-left .8s ease-in-out, transform .4s ease-out, margin-top 5s linear, opacity 1s ease-out;
+  transform-origin: 0% 100%;
+  background-size: 100% 100%;
+  transform: rotate(180deg);
+
+  .enemy-top{
+    transition: transform .8s ease-in-out;
+    background-image: url("../images/jet3top.png");
+    background-size: cover;
+  }
+}
+.enemy-explode{
+  opacity: 0;
+  background-image: url("../images/explosions/4.gif");
+}
+
 .explode{
   transition: margin-top 1s linear !important;
   margin-top: 750px !important;
@@ -105,10 +126,10 @@ body{
   position: absolute;
   height: 65px;
   width: 15px;
-  margin-top: 1080px;
+  margin-top: 1130px;
   background-image: url("../images/missile.gif");
   background-size: cover;
-  transition: margin-top 2s ease-in, margin-left 2s ease-in;
+  transition: margin-top 2s cubic-bezier(.63,.07,.84,.69), margin-left 2s ease-in;
 }
 #player-info{
   position: absolute;

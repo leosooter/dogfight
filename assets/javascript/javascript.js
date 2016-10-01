@@ -2,7 +2,7 @@ $(document).ready(function() {
   console.log("JQuery has loaded");
   var enemyCount = 1;
   var missileCount = 0;
-  var wing = 1;
+  var wing = 20;
 
   //Hide smoke trails on all planes
   $(".smoke-trail").hide();
@@ -13,17 +13,17 @@ $(document).ready(function() {
     rand1 = Math.floor(Math.random()*18)*50 + 50;
     console.log(rand1);
     var enemyId = "#enemy" + enemyCount;
-    var enemy = '<div id="enemy' + enemyCount + '" class="enemy jet"><div id="enemy' + enemyCount + '-top" class="jet-top"></div><div id="enemy' + enemyCount + '-side" class="jet-side"></div></div>';
+    var enemy = '<div id="enemy' + enemyCount + '" class="enemy jet"><div id="enemy' + enemyCount + '-top" class="enemy-top jet-top"></div><div id="enemy' + enemyCount + '-side" class="jet-side"></div></div>';
     $("#game-screen").prepend(enemy);
     $(enemyId).css("margin-left", rand1 + "px");
     setTimeout(function(){
-      //$(enemyId).css("margin-top", "1200px");
+    $(enemyId).css("margin-top", "1200px");
     }, 100);
     enemyCount ++;
     setTimeout(function(){
       $(enemyId).remove();
       enemyCount --;
-    }, 3000);
+    }, 5000);
     setTimeout(function(){
       generateEnemy();
     },5000);
@@ -197,16 +197,31 @@ $(document).ready(function() {
       console.log("removing missile - " + missileId);
       $(missileId).remove();
       missileCount --;
-    },2100);
+    },2200);
   }
 
   function missileTrack(missile){
     //var missile = missile;
-    if($(missile).offset().left < 1280){
+    if( $(missile).offset().left < 1200 ){
       setTimeout(function(){
-        //console.log($(missile).offset().left);
-        var missileX = Math.floor($(missile).offset().left);
-        $("#Xcoord").text(missileX);
+        var xLow = $(missile).offset().left - 30;
+        var xHigh = $(missile).offset().left + 30;
+
+        var yLow = $(missile).offset().top - 60;
+        var yHigh = $(missile).offset().top + 10;
+        $(".enemy").each(function(){
+          var xEnemy = $(this).offset().left;
+          var yEnemy = $(this).offset().top;
+          if( xLow < xEnemy && xEnemy < xHigh && yLow < yEnemy && yEnemy < yHigh){
+            console.log("strike");
+            missileCount --;
+            enemyCount --;
+            $(missile).remove();
+            $(this).empty();
+            $(this).addClass('enemy-explode');
+            return;
+          }
+        });
         missileTrack(missile);
       }, 50);
     }
