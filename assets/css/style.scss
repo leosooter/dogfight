@@ -1,27 +1,38 @@
 body{
-  width: 1200px;
+  height: 750px;
+  width: 1400px;
   background-color: white;
+  padding-left: 200px;
 }
 
 
 #game-screen{
-  width: 1000px;
-  height: 750px;
-  margin: 0 auto;
+  width: 750px;
+  height: 1200px;
+  border: 2px solid black;
+  //margin: 0 auto;
+  margin-left: 100px;
   overflow: hidden;
+  transform: rotate(90deg);
 }
+
 #ground{
   width: 1000px;
-  height: 3000px;
-  margin-top: -2000px;
+  height: 30200px;
+  margin-top: -29000px;
   background-image: url("../images/textures/ground1.jpg");
   background-size: contain;
+}
+.info{
+  float: right;
+  width: 200px;
+  margin-top: -750px;
 }
 .move-down{
   margin-top: 0 !important;
 }
 .speed-on{
-  transition: margin-top 3s linear;
+  transition: margin-top 90s linear;
 }
 
 .jet{
@@ -49,8 +60,8 @@ body{
 #player{
   height: 90px;
   width: 60px;
-  margin-top: 600px;
-  margin-left: 470px;
+  margin-top: 1090px;
+  margin-left: 300px;
   transition: margin-left .8s ease-in-out, transform .4s ease-out, margin-top 1s linear;
   transform-origin: 0% 100%;
   background-size: 100% 100%;
@@ -90,12 +101,17 @@ body{
   width: 200px !important;
   background-image: url("../images/explosions/player4.gif");
 }
-.missle{
+.missile{
   position: absolute;
   height: 65px;
   width: 15px;
-  margin-top: 630px;
-  background-image: url("../images/missle.gif");
+  margin-top: 1080px;
+  background-image: url("../images/missile.gif");
   background-size: cover;
-  transition: margin-top 1.5s ease-in, margin-left 1.5s ease-in;
+  transition: margin-top 2s ease-in, margin-left 2s ease-in;
+}
+#player-info{
+  position: absolute;
+  transform: rotate(-90deg);
+  margin-top: 100px;
 }

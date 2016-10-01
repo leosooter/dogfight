@@ -1,7 +1,35 @@
 $(document).ready(function() {
   console.log("JQuery has loaded");
+  var enemyCount = 1;
+  var missileCount = 0;
+  var wing = 1;
 
+  //Hide smoke trails on all planes
   $(".smoke-trail").hide();
+
+
+
+  function generateEnemy(){
+    rand1 = Math.floor(Math.random()*18)*50 + 50;
+    console.log(rand1);
+    var enemyId = "#enemy" + enemyCount;
+    var enemy = '<div id="enemy' + enemyCount + '" class="enemy jet"><div id="enemy' + enemyCount + '-top" class="jet-top"></div><div id="enemy' + enemyCount + '-side" class="jet-side"></div></div>';
+    $("#game-screen").prepend(enemy);
+    $(enemyId).css("margin-left", rand1 + "px");
+    setTimeout(function(){
+      //$(enemyId).css("margin-top", "1200px");
+    }, 100);
+    enemyCount ++;
+    setTimeout(function(){
+      $(enemyId).remove();
+      enemyCount --;
+    }, 3000);
+    setTimeout(function(){
+      generateEnemy();
+    },5000);
+  }
+
+  generateEnemy();
 
 
   function moveGround(){
@@ -13,19 +41,16 @@ $(document).ready(function() {
         $("#ground").addClass('speed-on');
         moveGround();
       },30);
-    }, 2970);
+    }, 89970);
   }
   moveGround();
-  var missle = "<div class='missle'></div>";
-  var missleCount = 0;
-  var wing = 1;
 
   var player = {
     id : $("#player"),
     topId : $("#player-top"),
     sideId : $("#player-side"),
     life : 1,
-    left : 470,
+    left : 300,
     topDeg : 0,
     sideDeg : 90,
     moveRight : function(){
@@ -113,42 +138,90 @@ $(document).ready(function() {
   $(document).keydown(function(event){
     console.log(event.which);
     if(event.which === 37 && event.shiftKey){
-      //console.log("left + shift");
-      player.rollLeft();
+      if(player.left >= 150){
+        player.rollLeft();
+      }
+      else if(player.left >= 50){
+        player.moveLeft();
+      }
+      return false;
     }
     else if(event.which === 39 && event.shiftKey){
-      //console.log("right + shift");
-      player.rollRight();
+      if(player.left <= 500){
+        player.rollRight();
+      }
+      else if(player.left <= 650){
+        player.moveRight();
+      }
+      return false;
     }
     else if(event.which === 37){
-      //console.log("left");
-      player.moveLeft();
+      if(player.left >= 50){
+        player.moveLeft();
+      }
+      return false;
     }
     else if(event.which === 38){
       console.log("up");
+      return false;
     }
     else if(event.which === 39){
-      //console.log("right");
-      player.moveRight();
+      if(player.left <= 650){
+        player.moveRight();
+      }
+      return false;
     }
     else if(event.which === 40){
       //console.log("down");
     }
     else if(event.which === 32){
-      //console.log("space");
-      missleCount ++;
+      if(missileCount < 3){
+        fireMissile();
+      }
+      return false;
+    }
+  });
 
-      $("#game-screen").prepend("<div id='missle"+ missleCount +"' class='missle'></div>");
-      $("#missle" + missleCount).css("margin-left", ((player.left + 30) + wing) + "px");
-      console.log("plane " + (player.left + 30) + " missle start " + ((player.left + 30) + wing) + "");
+
+  function fireMissile(){
+    missileCount ++;
+    var missile = "<div id='missile"+ missileCount +"' class='missile'></div>";
+    var missileId = "#missile" + missileCount;
+    $("#game-screen").prepend(missile);
+    $(missileId).css("margin-left", ((player.left + 30) + wing) + "px");
+    setTimeout(function(){
+      $(missileId).css("margin-top", "-70px");
+      missileTrack(missileId);
+    },30);
+    setTimeout(function(){
+      console.log("removing missile - " + missileId);
+      $(missileId).remove();
+      missileCount --;
+    },2100);
+  }
+
+  function missileTrack(missile){
+    //var missile = missile;
+    if($(missile).offset().left < 1280){
       setTimeout(function(){
-        $("#missle" + missleCount).css("margin-top", "0");
-        $("#missle" + missleCount).css("margin-left", (player.left + 30) + "px");
-      },30);
-
+        //console.log($(missile).offset().left);
+        var missileX = Math.floor($(missile).offset().left);
+        $("#Xcoord").text(missileX);
+        missileTrack(missile);
+      }, 50);
     }
 
-  });
+  }
+  //missileStrike(missileId, dist, target);
+  function missileStrike(id, dist, target){
+    setTimeout(function(){
+      console.log(id);
+      console.log(target);
+      $(id).remove();
+      $(target).empty();
+      $(target).addClass('explode-enemy');
+    }, dist);
+  }
 
 
 });
