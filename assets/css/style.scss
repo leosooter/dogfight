@@ -1,8 +1,9 @@
 body{
   height: 750px;
-  width: 1400px;
+  width: 1200px;
   background-color: white;
   padding-left: 200px;
+  margin-top: -225px;
 }
 
 
@@ -25,7 +26,7 @@ body{
 }
 .info{
   float: right;
-  width: 200px;
+  width: 100px;
   margin-top: -750px;
 }
 .move-down{
@@ -56,7 +57,14 @@ body{
   height: 100px;
   width: 100px;
   background-size: cover;
+  background-image: url("../images/smoke.gif");
+  transform: rotate(180deg);
 }
+.enemy-smoke{
+  margin-top: 40px;
+  margin-left: -20px;
+}
+
 #player{
   height: 90px;
   width: 60px;
@@ -79,19 +87,13 @@ body{
   #player-smoke-3{
      margin-top: 80px;
      margin-left: -20px;
-     background-image: url("../images/smoke.gif");
-     transform: rotate(180deg);
   }
   #player-smoke-1{
      margin-top: 65px;
      margin-left: -40px;
-     background-image: url("../images/smoke.gif");
-     transform: rotate(180deg);
   }
   #player-smoke-2{
      margin-top: 65px;
-     background-image: url("../images/smoke.gif");
-     transform: rotate(180deg);
   }
 }
 
@@ -108,6 +110,12 @@ body{
     transition: transform .8s ease-in-out;
     background-image: url("../images/jet3top.png");
     background-size: cover;
+  }
+  .enemy-side{
+    margin-left: 23px;
+    transition: transform .8s ease-in-out;
+    background-image: url("../images/jet3side.png");
+    transform:rotateY(90deg);
   }
 }
 .enemy-explode{
@@ -131,7 +139,19 @@ body{
   background-size: cover;
   transition: margin-top 2s cubic-bezier(.63,.07,.84,.69), margin-left 2s ease-in;
 }
+.gun{
+  position: absolute;
+  height: 3px;
+  width: 3px;
+  margin-top: 1130px;
+  background-color: black;
+  border-radius: 50%;
+  transition: margin-top 2s linear, margin-left 2s linear;
+}
 #player-info{
+  height: 200px;
+  width: 200px;
+  background-size: cover;
   position: absolute;
   transform: rotate(-90deg);
   margin-top: 100px;
